@@ -67,29 +67,23 @@ pcbs:
         outline: board
     footprints:
       choc_hotswap:
-        what: choc
+        what: infused-kim/choc
         where: true
         params:
-          keycaps: true
           reverse: true
           hotswap: true
           from: "{{column_net}}"
           to: "{{colrow}}"
       nicenano: 
-        what: promicro
-        params:
-          orientation: "up"
+        what: infused-kim/nice_nano_pretty
         where:
           ref: matrix_inner_number
-          shift: [21.5, -0.5ky]
-          rotate: -90
+          shift: [21.5, -8.5]
       niceview:
-        what: oled
+        what: infused-kim/nice_view
         params:
           side: "F"
-          SDA: P2
-          SCL: P3
+          reverse: true
         where:
           ref: matrix_inner_number
-          shift: [15.5, -27.5]
-          rotate: 90
+          shift: [21.5, -13]
