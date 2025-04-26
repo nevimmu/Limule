@@ -1,0 +1,95 @@
+meta:
+  engine: 4.0.2
+  author: Nevimmu
+units:
+  kx: cx
+  ky: cy
+  pad: 2
+  
+  px: kx + pad
+  py: ky + pad
+
+  extra: 1.7px
+  nicewidh: 17.78
+points:
+  zones:
+    matrix:
+      # Fix placement on KiCAD sheet.
+      anchor:
+        shift: [45, -100]
+      key:
+        spread: kx
+        padding: ky
+      rows:
+        mod:
+        bottom:
+        home:
+        top:
+        number:
+      columns:
+        outer:
+        pinky:
+        ring:
+        middle:
+        index:
+        inner:
+outlines:
+  raw:
+    - what: rectangle
+      where: true
+      size: [px, py]
+  keys:
+    - what: rectangle
+      where: true
+      size: [kx-0.5,ky-0.5]
+  board:
+    - what: polygon
+      operation: stack
+      points:
+        - ref: matrix_outer_number
+          shift: [-0.5px,0.5py]
+        - ref: matrix_inner_number
+          shift: [extra, 0.5py]
+        - ref: matrix_inner_mod
+          shift: [extra, -0.5py]
+        - ref: matrix_outer_mod
+          shift: [-0.5px, -0.5py]
+      fillet: 2
+
+  combo:
+    - name: board
+    - operation: subtract
+      name: keys
+pcbs:
+  pcb:
+    outlines:
+      main:
+        outline: board
+    footprints:
+      choc_hotswap:
+        what: choc
+        where: true
+        params:
+          keycaps: true
+          reverse: true
+          hotswap: true
+          from: "{{column_net}}"
+          to: "{{colrow}}"
+      nicenano: 
+        what: promicro
+        params:
+          orientation: "up"
+        where:
+          ref: matrix_inner_number
+          shift: [21.5, -0.5ky]
+          rotate: -90
+      niceview:
+        what: oled
+        params:
+          side: "F"
+          SDA: P2
+          SCL: P3
+        where:
+          ref: matrix_inner_number
+          shift: [15.5, -27.5]
+          rotate: 90
