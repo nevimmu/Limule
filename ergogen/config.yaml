@@ -101,7 +101,6 @@ pcbs:
         what: infused-kim/switch_reset
         params:
           reverse: true
-          side: "B"
         where:
           ref: matrix_inner_bottom
           shift: [32.3, 0]
@@ -109,7 +108,6 @@ pcbs:
         what: infused-kim/switch_power
         params:
           reverse: true
-          side: "B"
         where:
           ref: matrix_inner_bottom
           shift: [32.2, 10]
