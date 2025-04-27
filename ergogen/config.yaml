@@ -1,5 +1,5 @@
 meta:
-  engine: 4.0.2
+  engine: 4.1.0
   author: Nevimmu
 units:
   kx: cx
@@ -64,6 +64,7 @@ pcbs:
   pcb:
     outlines:
       main:
+        template: kicad8
         outline: board
     footprints:
       choc_hotswap:
@@ -74,6 +75,15 @@ pcbs:
           hotswap: true
           from: "{{column_net}}"
           to: "{{colrow}}"
+      diode: 
+        what: infused-kim/diode
+        where: true
+        params:
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+          include_tht: false
+        adjust:
+          shift: [0, -5]
       nicenano: 
         what: infused-kim/nice_nano_pretty
         where:
@@ -87,3 +97,27 @@ pcbs:
         where:
           ref: matrix_inner_number
           shift: [21.5, -13]
+      reset:
+        what: infused-kim/switch_reset
+        params:
+          reverse: true
+          side: "B"
+        where:
+          ref: matrix_inner_bottom
+          shift: [32.3, 0]
+      power:
+        what: infused-kim/switch_power
+        params:
+          reverse: true
+          side: "B"
+        where:
+          ref: matrix_inner_bottom
+          shift: [32.2, 10]
+      jst:
+        what: ceoloide/battery_connector_jst_ph_2 #jstph
+        params:
+            reversible: true
+        where:
+          ref: matrix_inner_home
+          shift: [21, -5]
+          rotate: -90
