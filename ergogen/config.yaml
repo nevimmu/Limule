@@ -4,12 +4,12 @@ meta:
 units:
   kx: cx
   ky: cy
-  pad: 2
+  pad: 4
   
   px: kx + pad
   py: ky + pad
 
-  extra: 1.7px
+  extra: 1.5px
   nicewidh: 17.78
 points:
   zones:
@@ -88,7 +88,7 @@ pcbs:
         what: infused-kim/nice_nano_pretty
         where:
           ref: matrix_inner_number
-          shift: [21.5, -8.5]
+          shift: [21.5, -6]
       niceview:
         what: infused-kim/nice_view
         params:
@@ -96,21 +96,21 @@ pcbs:
           reverse: true
         where:
           ref: matrix_inner_number
-          shift: [21.5, -13]
+          shift: [21.5, -10.5]
       reset:
         what: infused-kim/switch_reset
         params:
           reverse: true
         where:
           ref: matrix_inner_bottom
-          shift: [32.3, 0]
+          shift: [31.3, 0]
       power:
         what: infused-kim/switch_power
         params:
           reverse: true
         where:
           ref: matrix_inner_bottom
-          shift: [32.2, 10]
+          shift: [31.5, 10]
       jst:
         what: ceoloide/battery_connector_jst_ph_2 #jstph
         params:
@@ -119,3 +119,28 @@ pcbs:
           ref: matrix_inner_home
           shift: [21, -5]
           rotate: -90
+      holeTopLeft:
+        what: infused-kim/mounting_hole
+        where:
+          ref: matrix_outer_number
+          shift: [0.5kx,-0.5ky]
+      holeBottomLeft:
+        what: infused-kim/mounting_hole
+        where:
+          ref: matrix_outer_mod
+          shift: [0.5kx,0.5ky]
+      holeTopRight:
+        what: infused-kim/mounting_hole
+        where:
+          ref: matrix_inner_number
+          shift: [-0.5kx,-0.5ky]
+      holeBottomRight:
+        what: infused-kim/mounting_hole
+        where:
+          ref: matrix_inner_mod
+          shift: [-0.5kx,0.5ky]
+      holeMiddle:
+        what: infused-kim/mounting_hole
+        where:
+          ref: matrix_ring_bottom
+          shift: [0.5kx,0.5ky]
