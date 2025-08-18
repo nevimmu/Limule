@@ -128,6 +128,15 @@ pcbs:
         params: &textParams
           text: Orchid
           justify: left
+      back_text:
+        <<: *text
+        where:
+          <<: *textWhere
+          shift: [23, -7]
+        params:
+          <<: *textParams
+          layer: B.SilkS
+          justify: left mirror
       holeTopLeft:
         what: infused-kim/mounting_hole
         where:
