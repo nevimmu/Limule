@@ -16,24 +16,40 @@ points:
     matrix:
       # Fix placement on KiCAD sheet.
       anchor:
-        shift: [45, -100]
+        shift: [90, -130]
       key:
         spread: kx
         padding: ky
       rows:
         mod:
-          row_net: P0
+          row_net: P4
         bottom:
+          row_net: P5
         home:
+          row_net: P6
         top:
+          row_net: P7
         number:
+          row_net: P8
       columns:
         outer:
+          key:
+            column_net: P21
         pinky:
+          key:
+            column_net: P20
         ring:
+          key:
+            column_net: P19
         middle:
+          key:
+            column_net: P18
         index:
+          key:
+            column_net: P15
         inner:
+          key:
+            column_net: P14
 outlines:
   raw:
     - what: rectangle
@@ -62,7 +78,7 @@ outlines:
     - operation: subtract
       name: keys
 pcbs:
-  pcb:
+  limule:
     outlines:
       main:
         template: kicad8
@@ -84,7 +100,8 @@ pcbs:
           to: "{{row_net}}"
           include_tht: false
         adjust:
-          shift: [0, -5]
+          shift: [0.4kx, -0.20ky]
+          rotate: 90
       nicenano: 
         what: infused-kim/nice_nano_pretty
         where:
@@ -95,6 +112,9 @@ pcbs:
         params:
           side: "F"
           reverse: true
+          MOSI: P3
+          SCK: P2
+          CS: P1
         where:
           ref: matrix_inner_number
           shift: [21.5, -10.5]
@@ -115,10 +135,10 @@ pcbs:
       jst:
         what: ceoloide/battery_connector_jst_ph_2 #jstph
         params:
-            reversible: true
+          reversible: true
         where:
           ref: matrix_inner_home
-          shift: [21, -5]
+          shift: [23, -5]
           rotate: -90
       front_text: &text
         what: text
@@ -126,7 +146,7 @@ pcbs:
           ref: matrix_inner_bottom
           shift: [18, -7]
         params: &textParams
-          text: Orchid
+          text: Limule - v1
           justify: left
       back_text:
         <<: *text
@@ -162,3 +182,30 @@ pcbs:
         where:
           ref: matrix_ring_bottom
           shift: [0.5kx,0.5ky]
+      holeCoverBottomLeft:
+        what: infused-kim/mounting_hole
+        where:
+          ref: matrix_inner_mod
+          shift: [0.7kx,-0.4ky]
+      holeCoverBottomRight:
+        what: infused-kim/mounting_hole
+        where:
+          ref: matrix_inner_mod
+          shift: [extra - 0.15kx,-0.4ky]
+      holeCoverTopLeft:
+        what: infused-kim/mounting_hole
+        where:
+          ref: matrix_inner_home
+          shift: [0.7kx,0.1ky]
+      holeCoverTopRight:
+        what: infused-kim/mounting_hole
+        where:
+          ref: matrix_inner_home
+          shift: [extra - 0.15kx,0.1ky]
+      limule:
+        what: limule
+        where:
+          ref: matrix_outer_number
+          shift: [-20, 30]
+        params:
+          scale: .1
