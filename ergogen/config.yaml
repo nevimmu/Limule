@@ -11,6 +11,10 @@ units:
 
   extra: 1.5px
   nicewidh: 17.78
+
+  drill_size: 4
+  drill_outline: .3
+
 points:
   zones:
     matrix:
@@ -51,14 +55,11 @@ points:
           key:
             column_net: P14
 outlines:
-  raw:
-    - what: rectangle
-      where: true
-      size: [px, py]
   keys:
     - what: rectangle
       where: true
-      size: [kx-0.5,ky-0.5]
+      size: [14, 14]
+
   board:
     - what: polygon
       operation: stack
@@ -77,8 +78,60 @@ outlines:
     - name: board
     - operation: subtract
       name: keys
+
+  top:
+    - what: polygon
+      operation: stack
+      points:
+        - ref: matrix_outer_number
+          shift: [-0.5px,0.5py]
+        - ref: matrix_inner_number
+          shift: [0.5px, 0.5py]
+        - ref: matrix_inner_mod
+          shift: [0.5px, -0.5py]
+        - ref: matrix_outer_mod
+          shift: [-0.5px, -0.5py]
+      fillet: 2
+
+  combo_top:
+    - name: top
+    - operation: subtract
+      name: keys
+  
 pcbs:
-  limule:
+  limule_topplate:
+    outlines:
+      main:
+        template: kicad8
+        outline: combo_top
+    footprints:
+      holeTopLeft:
+        what: infused-kim/mounting_hole
+        where:
+          ref: matrix_outer_number
+          shift: [0.5kx,-0.5ky]
+      holeBottomLeft:
+        what: infused-kim/mounting_hole
+        where:
+          ref: matrix_outer_mod
+          shift: [0.5kx,0.5ky]
+      holeTopRight:
+        what: infused-kim/mounting_hole
+        where:
+          ref: matrix_inner_number
+          shift: [-0.5kx,-0.5ky]
+      holeBottomRight:
+        what: infused-kim/mounting_hole
+        where:
+          ref: matrix_inner_mod
+          shift: [-0.5kx,0.5ky]
+      holeMiddle:
+        what: infused-kim/mounting_hole
+        where:
+          ref: matrix_ring_bottom
+          shift: [0.5kx,0.5ky]
+
+  limule_pcb:
     outlines:
       main:
         template: kicad8
@@ -162,26 +215,41 @@ pcbs:
         where:
           ref: matrix_outer_number
           shift: [0.5kx,-0.5ky]
+        params:
+          drill: drill_size
+          outline: drill_outline
       holeBottomLeft:
         what: infused-kim/mounting_hole
         where:
           ref: matrix_outer_mod
           shift: [0.5kx,0.5ky]
+        params:
+          drill: drill_size
+          outline: drill_outline
       holeTopRight:
         what: infused-kim/mounting_hole
         where:
           ref: matrix_inner_number
           shift: [-0.5kx,-0.5ky]
+        params:
+          drill: drill_size
+          outline: drill_outline
       holeBottomRight:
         what: infused-kim/mounting_hole
         where:
           ref: matrix_inner_mod
           shift: [-0.5kx,0.5ky]
+        params:
+          drill: drill_size
+          outline: drill_outline
       holeMiddle:
         what: infused-kim/mounting_hole
         where:
           ref: matrix_ring_bottom
           shift: [0.5kx,0.5ky]
+        params:
+          drill: drill_size
+          outline: drill_outline
       holeCoverBottomLeft:
         what: infused-kim/mounting_hole
         where:
