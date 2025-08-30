@@ -1,6 +1,6 @@
-# Orchid Keyboard
+# Limule Keyboard
 
-A 30-key split ergonomic keyboard powered by ZMK firmware.
+A split ergonomic keyboard powered by ZMK firmware.
 
 ## Features
 

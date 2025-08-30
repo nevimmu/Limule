@@ -1,12 +1,12 @@
 {
-	"name": "orchid",
+	"name": "limule",
 	"description": "A keyboard for Nevimmu",
 	"version": "0.0.1",
 	"author": "Nevimmu <nevimmu@gmail.com>",
 	"license": "MIT",
 	"private": true,
-	"homepage": "https://github.com/Nevimmu/orchid",
-	"repository": "github:Nevimmu/orchid",
+	"homepage": "https://github.com/Nevimmu/limule",
+	"repository": "github:Nevimmu/limule",
 	"scripts": {
 		"ergogen:build": "ergogen --clean -o ergogen/output ergogen",
 		"ergogen:watch": "nodemon --ext .js,.yaml --watch ergogen/footprints --watch ergogen/config.yaml --exec npm run ergogen:build"
