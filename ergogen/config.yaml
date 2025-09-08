@@ -104,27 +104,32 @@ pcbs:
       main:
         template: kicad8
         outline: combo_top
+
     footprints:
       holeTopLeft:
         what: infused-kim/mounting_hole
         where:
           ref: matrix_outer_number
           shift: [0.5kx,-0.5ky]
+
       holeBottomLeft:
         what: infused-kim/mounting_hole
         where:
           ref: matrix_outer_mod
           shift: [0.5kx,0.5ky]
+
       holeTopRight:
         what: infused-kim/mounting_hole
         where:
           ref: matrix_inner_number
           shift: [-0.5kx,-0.5ky]
+
       holeBottomRight:
         what: infused-kim/mounting_hole
         where:
           ref: matrix_inner_mod
           shift: [-0.5kx,0.5ky]
+
       holeMiddle:
         what: infused-kim/mounting_hole
         where:
@@ -136,6 +141,7 @@ pcbs:
       main:
         template: kicad8
         outline: board
+
     footprints:
       choc_hotswap:
         what: infused-kim/choc
@@ -145,6 +151,7 @@ pcbs:
           hotswap: true
           from: "{{column_net}}"
           to: "{{colrow}}"
+
       diode: 
         what: infused-kim/diode
         where: true
@@ -155,11 +162,13 @@ pcbs:
         adjust:
           shift: [0.4kx, -0.20ky]
           rotate: 90
+
       nicenano: 
         what: infused-kim/nice_nano_pretty
         where:
           ref: matrix_inner_number
           shift: [21.5, -6]
+
       niceview:
         what: infused-kim/nice_view
         params:
@@ -171,6 +180,7 @@ pcbs:
         where:
           ref: matrix_inner_number
           shift: [21.5, -10.5]
+
       reset:
         what: infused-kim/switch_reset
         params:
@@ -178,6 +188,7 @@ pcbs:
         where:
           ref: matrix_inner_bottom
           shift: [31.3, 0]
+
       power:
         what: infused-kim/switch_power
         params:
@@ -185,6 +196,7 @@ pcbs:
         where:
           ref: matrix_inner_bottom
           shift: [31.3, 10]
+
       jst:
         what: ceoloide/battery_connector_jst_ph_2 #jstph
         params:
@@ -193,6 +205,7 @@ pcbs:
           ref: matrix_inner_home
           shift: [23, -5]
           rotate: -90
+
       front_text: &text
         what: text
         where: &textWhere
@@ -201,6 +214,7 @@ pcbs:
         params: &textParams
           text: Limule - v1
           justify: left
+
       back_text:
         <<: *text
         where:
@@ -210,6 +224,7 @@ pcbs:
           <<: *textParams
           layer: B.SilkS
           justify: left mirror
+
       holeTopLeft:
         what: infused-kim/mounting_hole
         where:
@@ -218,6 +233,7 @@ pcbs:
         params:
           drill: drill_size
           outline: drill_outline
+
       holeBottomLeft:
         what: infused-kim/mounting_hole
         where:
@@ -226,6 +242,7 @@ pcbs:
         params:
           drill: drill_size
           outline: drill_outline
+
       holeTopRight:
         what: infused-kim/mounting_hole
         where:
@@ -234,6 +251,7 @@ pcbs:
         params:
           drill: drill_size
           outline: drill_outline
+
       holeBottomRight:
         what: infused-kim/mounting_hole
         where:
@@ -242,6 +260,7 @@ pcbs:
         params:
           drill: drill_size
           outline: drill_outline
+
       holeMiddle:
         what: infused-kim/mounting_hole
         where:
@@ -250,26 +269,31 @@ pcbs:
         params:
           drill: drill_size
           outline: drill_outline
+
       holeCoverBottomLeft:
         what: infused-kim/mounting_hole
         where:
           ref: matrix_inner_mod
           shift: [0.7kx,-0.4ky]
+
       holeCoverBottomRight:
         what: infused-kim/mounting_hole
         where:
           ref: matrix_inner_mod
           shift: [extra - 0.15kx,-0.4ky]
+
       holeCoverTopLeft:
         what: infused-kim/mounting_hole
         where:
           ref: matrix_inner_home
           shift: [0.7kx,0.1ky]
+
       holeCoverTopRight:
         what: infused-kim/mounting_hole
         where:
           ref: matrix_inner_home
           shift: [extra - 0.15kx,0.1ky]
+
       limule:
         what: limule
         where:
@@ -277,7 +301,8 @@ pcbs:
           shift: [-20, 30]
         params:
           scale: .1
-      route_key:
+
+      routes_key:
         what: ceoloide/utility_router
         where: true
         params:
@@ -296,7 +321,7 @@ pcbs:
             - "(7.2,5.05)V"  # net: P8
             - "(7.2,1.75)V"  # net: outer_number
 
-      route_col:
+      routes_col:
         what: ceoloide/utility_router
         where: -/inner/
         params:
@@ -304,7 +329,7 @@ pcbs:
           routes:
             - "F(7.2,5.05)(25.2,5.05)"  # net: P8
 
-      route_row:
+      routes_row:
         what: ceoloide/utility_router
         where: -/mod/
         params:
