@@ -209,8 +209,8 @@ pcbs:
       front_text: &text
         what: text
         where: &textWhere
-          ref: matrix_inner_bottom
-          shift: [18, -7]
+          ref: matrix_inner_mod
+          shift: [17, -7]
         params: &textParams
           text: Limule - v1
           justify: left
@@ -219,7 +219,7 @@ pcbs:
         <<: *text
         where:
           <<: *textWhere
-          shift: [23, -7]
+          shift: [25.5, -7]
         params:
           <<: *textParams
           layer: B.SilkS
@@ -297,10 +297,10 @@ pcbs:
       limule:
         what: limule
         where:
-          ref: matrix_outer_number
-          shift: [-20, 30]
+          ref: matrix_inner_bottom
+          shift: [2, 10]
         params:
-          scale: .1
+          scale: .030
 
       routes_key:
         what: ceoloide/utility_router
